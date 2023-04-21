@@ -11,15 +11,15 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 public class KafkaTopic {
 
     @Bean
-    public NewTopic patientTopic() {
-        return TopicBuilder.name("patients")
-                .build();
-    }
-
-    @Bean
     public ErrorHandlingDeserializer<String> errorHandlingDeserializer() {
         JsonDeserializer<String> jsonDeserializer = new JsonDeserializer<>(String.class);
 
         return new ErrorHandlingDeserializer<>(jsonDeserializer);
+    }
+
+    @Bean
+    public NewTopic patientTopic() {
+        return TopicBuilder.name("patients")
+                .build();
     }
 }

@@ -27,6 +27,12 @@ public class Patient {
         this.reasonAdmitted = reasonAdmitted;
     }
 
+    public String getMessage(String enterOrExit) {
+        return String.format("%s %s has %s because of %s", firstName, lastName, enterOrExit, reasonAdmitted);
+    }
+
+    // Getters and Setters
+
     public long getId() {
         return id;
     }
@@ -57,10 +63,6 @@ public class Patient {
 
     public void setReasonAdmitted(String reasonAdmitted) {
         this.reasonAdmitted = reasonAdmitted;
-    }
-
-    public String getEnterMessage() {
-        return String.format("%s %s has entered because of %s", firstName, lastName, reasonAdmitted);
     }
 
     @Override

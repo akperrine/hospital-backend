@@ -20,8 +20,8 @@ public class PatientController {
     @Autowired
     PatientService patientService;
 
-    @Autowired
-    KafkaProducer kafkaProducer;
+//    @Autowired
+//    KafkaProducer kafkaProducer;
 
     @GetMapping("/patients")
     public ResponseEntity<PatientList> getAllPatients(){
@@ -39,8 +39,6 @@ public class PatientController {
     public ResponseEntity<Patient> get(@PathVariable Long id) {
         try {
             Patient patient = patientService.getPatientById(id);
-//            kafkaProducer.sendMessage(String.format("Patient is -> %s", patient));
-            kafkaProducer.sendMessage(patient);
             return new ResponseEntity<Patient>(patient, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<Patient>(HttpStatus.NOT_FOUND);

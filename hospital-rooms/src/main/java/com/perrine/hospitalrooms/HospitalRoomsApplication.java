@@ -16,10 +16,10 @@ public class HospitalRoomsApplication {
 		return new RestTemplate();
 	}
 
-	@Bean
-	public StringJsonMessageConverter jsonConverter() {
-		return new StringJsonMessageConverter();
-	}
+//	@Bean
+//	public StringJsonMessageConverter jsonConverter() {
+//		return new StringJsonMessageConverter();
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(HospitalRoomsApplication.class, args);
