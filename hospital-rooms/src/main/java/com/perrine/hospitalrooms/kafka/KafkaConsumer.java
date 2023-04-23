@@ -5,24 +5,30 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.converter.StringJsonMessageConverter;
 import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.stereotype.Service;
 
-//@Service
+@Service
 public class KafkaConsumer {
 
     private static final Logger logger = LoggerFactory.getLogger(KafkaConsumer.class);
 
-    @Bean
-    public ErrorHandlingDeserializer<String> errorHandlingDeserializer() {
-        JsonDeserializer<String> jsonDeserializer = new JsonDeserializer<>(String.class);
+//    @Bean
+//    public ErrorHandlingDeserializer<String> errorHandlingDeserializer() {
+//        JsonDeserializer<String> jsonDeserializer = new JsonDeserializer<>(String.class);
+//
+//        return new ErrorHandlingDeserializer<>(jsonDeserializer);
+//    }
 
-        return new ErrorHandlingDeserializer<>(jsonDeserializer);
+    @Bean
+    public StringJsonMessageConverter jsonConverter() {
+        return new StringJsonMessageConverter();
     }
 
     @KafkaListener(topics = "patients", groupId = "myGroup")
     public void consume(Patient patient) {
-        logger.info(String.format("Message: %s", patient.getEnteredOrExitMessage("entered")));
+        logger.info(String.format("Message: %s", patient));
     }
 }

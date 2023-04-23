@@ -7,7 +7,7 @@ import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
-//@Configuration
+@Configuration
 public class KafkaTopic {
 
     @Bean

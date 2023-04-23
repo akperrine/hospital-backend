@@ -9,13 +9,13 @@ import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
-//@Configuration
+@Configuration
 public class KafkaProducer {
 
     private static final Logger logger = LoggerFactory.getLogger(KafkaProducer.class);
-    private KafkaTemplate<Object, String> kafkaTemplate;
+    private KafkaTemplate<String, Patient> kafkaTemplate;
 
-    public KafkaProducer(KafkaTemplate<Object, String> kafkaTemplate) {
+    public KafkaProducer(KafkaTemplate<String, Patient> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
@@ -29,10 +29,5 @@ public class KafkaProducer {
 
         kafkaTemplate.send(message);
     }
-
-//    public void sendEnterMessage(String message) {
-//        logger.info(String.format("Message sent: %s", message));
-//        kafkaTemplate.send("patients", message);
-//    }
 
 }
