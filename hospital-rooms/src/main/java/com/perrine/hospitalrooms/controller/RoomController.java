@@ -32,6 +32,20 @@ public class RoomController {
 
     @GetMapping("place")
     public Floor checkAvailable(){
-      return roomDirector.distributePatients();
+        System.out.println("start");
+      if(!roomDirector.checkPatientListInitialized()) {
+          System.out.println("distrib");
+        return roomDirector.distributePatients();
+      }
+      else {
+          System.out.println("update");
+          return roomDirector.updateRoomDistribution();
+      }
+    }
+
+    @GetMapping("test")
+    public int test() {
+        System.out.println("hello");
+        return roomDirector.availableRooms();
     }
 }

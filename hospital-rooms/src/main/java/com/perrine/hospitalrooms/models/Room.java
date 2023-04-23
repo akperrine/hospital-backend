@@ -3,17 +3,17 @@ package com.perrine.hospitalrooms.models;
 import java.util.Optional;
 
 public class Room {
-    private Optional<Patient> patient;
+    private Patient patient;
 
-    public Room(Optional<Patient> patient) {
+    public Room(Patient patient) {
         this.patient = patient;
     }
 
-    public Optional<Patient> getPatient() {
+    public Patient getPatient() {
         return patient;
     }
 
-    public void setPatient(Optional<Patient> patient) {
+    public void setPatient(Patient patient) {
         this.patient = patient;
     }
 

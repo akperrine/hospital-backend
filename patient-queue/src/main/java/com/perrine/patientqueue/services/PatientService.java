@@ -14,8 +14,8 @@ public class PatientService {
     @Autowired
     private PatientRepository patientRepository;
 
-    @Autowired
-    private KafkaProducer kafkaProducer;
+//    @Autowired
+//    private KafkaProducer kafkaProducer;
 
     public List<Patient> getPatients() {
         return patientRepository.findAll();
@@ -23,13 +23,13 @@ public class PatientService {
 
     @Transactional
     public void patientEnters(Patient patient) {
-        kafkaProducer.sendData(patient);
+//        kafkaProducer.sendData(patient);
         patientRepository.save(patient);
     }
 
     public Patient getPatientById(Long id) {
         Patient patient = patientRepository.findById(id).get();
-        kafkaProducer.sendData(patient);
+//        kafkaProducer.sendData(patient);
         return patient;
     }
 
