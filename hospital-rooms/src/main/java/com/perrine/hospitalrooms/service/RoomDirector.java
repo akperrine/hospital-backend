@@ -26,7 +26,7 @@ public class RoomDirector {
 
     private List<Patient> getPatientQueue() {
         List<Patient> response = restTemplate
-                .getForObject("http://localhost:8080/hospital/patients", PatientList.class).getPatients();
+                .getForObject("http://patient-queue/hospital/patients", PatientList.class).getPatients();
         floor.setPatients(response);
         return response;
 
